@@ -20,7 +20,8 @@ namespace Q_EF_DB.Entities
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
         public virtual ICollection<Answer> Answers { get; set; }
-        public virtual ICollection<Tag> Tags{ get; set; }
+        
+        public virtual ICollection<QuestionTag> QuestionTags{ get; set; }
 
     }
 }
