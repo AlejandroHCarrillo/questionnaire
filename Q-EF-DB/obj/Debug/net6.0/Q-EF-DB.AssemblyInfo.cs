@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Q-EF-DB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f05a0a96ed91558ed4178120c3efbb4fafeedf93")]
 [assembly: System.Reflection.AssemblyProductAttribute("Q-EF-DB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Q-EF-DB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

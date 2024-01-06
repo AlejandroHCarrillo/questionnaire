@@ -1,0 +1,15 @@
+C:\repos\telexa\questionnaire\Q-EF-DB\bin\Debug\net6.0\Q-EF-DB.deps.json
+C:\repos\telexa\questionnaire\Q-EF-DB\bin\Debug\net6.0\Q-EF-DB.runtimeconfig.json
+C:\repos\telexa\questionnaire\Q-EF-DB\bin\Debug\net6.0\Q-EF-DB.dll
+C:\repos\telexa\questionnaire\Q-EF-DB\bin\Debug\net6.0\Q-EF-DB.pdb
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.csproj.AssemblyReference.cache
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.AssemblyInfoInputs.cache
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.AssemblyInfo.cs
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.csproj.CoreCompileInputs.cache
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.sourcelink.json
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.dll
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\refint\Q-EF-DB.dll
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.pdb
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\Q-EF-DB.genruntimeconfig.cache
+C:\repos\telexa\questionnaire\Q-EF-DB\obj\Debug\net6.0\ref\Q-EF-DB.dll

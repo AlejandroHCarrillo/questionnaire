@@ -1,6 +1,6 @@
 namespace questionnaire
 {
-    public class WeatherForecast
+    public class Question
     {
         public DateTime Date { get; set; }
 
