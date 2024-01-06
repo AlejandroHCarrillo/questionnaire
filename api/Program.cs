@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Q_EF_DB;
+using Q_EF_DB.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

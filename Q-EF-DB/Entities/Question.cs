@@ -13,12 +13,14 @@ namespace Q_EF_DB.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int? Id { get; set; }
-        public string? User { get; set; }
         public string? Value { get; set; }
         public int? Votes { get; set; }
+        public int? UserId { get; set; }
 
-        public virtual ICollection<Answer>? Answers { get; set; }
-        public virtual ICollection<Tag>? Tags{ get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
+        public virtual ICollection<Tag> Tags{ get; set; }
 
     }
 }
