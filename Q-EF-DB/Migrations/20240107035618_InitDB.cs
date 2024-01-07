@@ -4,7 +4,7 @@
 
 namespace Q_EF_DB.Migrations
 {
-    public partial class initialDB : Migration
+    public partial class InitDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,28 +84,27 @@ namespace Q_EF_DB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuestionTag",
+                name: "QuestionTags",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionId = table.Column<int>(type: "int", nullable: true),
-                    TagId = table.Column<int>(type: "int", nullable: false)
+                    TagId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionTag", x => x.Id);
+                    table.PrimaryKey("PK_QuestionTags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_QuestionTag_Questions_QuestionId",
+                        name: "FK_QuestionTags_Questions_QuestionId",
                         column: x => x.QuestionId,
                         principalTable: "Questions",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_QuestionTag_Tags_TagId",
+                        name: "FK_QuestionTags_Tags_TagId",
                         column: x => x.TagId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
@@ -156,7 +155,7 @@ namespace Q_EF_DB.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "QuestionTag",
+                table: "QuestionTags",
                 columns: new[] { "Id", "QuestionId", "TagId" },
                 values: new object[,]
                 {
@@ -182,13 +181,13 @@ namespace Q_EF_DB.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionTag_QuestionId",
-                table: "QuestionTag",
+                name: "IX_QuestionTags_QuestionId",
+                table: "QuestionTags",
                 column: "QuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionTag_TagId",
-                table: "QuestionTag",
+                name: "IX_QuestionTags_TagId",
+                table: "QuestionTags",
                 column: "TagId");
         }
 
@@ -198,7 +197,7 @@ namespace Q_EF_DB.Migrations
                 name: "Answers");
 
             migrationBuilder.DropTable(
-                name: "QuestionTag");
+                name: "QuestionTags");
 
             migrationBuilder.DropTable(
                 name: "Questions");

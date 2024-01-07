@@ -12,8 +12,8 @@ using Q_EF_DB;
 namespace Q_EF_DB.Migrations
 {
     [DbContext(typeof(QContext))]
-    [Migration("20240106092712_initialDB")]
-    partial class initialDB
+    [Migration("20240107035618_InitDB")]
+    partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -165,7 +165,6 @@ namespace Q_EF_DB.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("TagId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -174,7 +173,7 @@ namespace Q_EF_DB.Migrations
 
                     b.HasIndex("TagId");
 
-                    b.ToTable("QuestionTag");
+                    b.ToTable("QuestionTags");
 
                     b.HasData(
                         new
@@ -302,9 +301,7 @@ namespace Q_EF_DB.Migrations
 
                     b.HasOne("Q_EF_DB.Entities.Tag", "Tag")
                         .WithMany()
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TagId");
 
                     b.Navigation("Question");
 

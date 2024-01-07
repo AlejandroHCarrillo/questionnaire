@@ -19,10 +19,10 @@ namespace Q_EF_DB.Entities
         public int? TagId { get; set; }
 
         [ForeignKey("QuestionId")]
-        public virtual Question Question { get; set; }
+        public virtual Question? Question { get; set; }
 
         [ForeignKey("TagId")]
-        public virtual Tag Tag { get; set; }
+        public virtual Tag? Tag { get; set; }
 
     }
 }
