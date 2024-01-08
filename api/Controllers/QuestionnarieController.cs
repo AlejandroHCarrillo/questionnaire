@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using Q_EF_DB;
 using Q_EF_DB.Entities;
@@ -24,15 +25,25 @@ namespace questionnaire.Controllers
         [Route("allquestions")]
         public IEnumerable<Question> Get()
         {
-            return _context.Questions.ToArray<Question>();
+            // TODO: Add Page, pagesize and filters
+            return _context.Questions
+                .Include(q => q.User)
+                .Include(q => q.Answers)
+                .Include(q => q.QuestionTags)
+                //.Include(x => x.QuestionTags. )
+                .ToArray<Question>();
         }
 
         [HttpGet]
         [Route("getquestion")]
-        public Question Get(int id = 0)
+        public dynamic Get(int id = 0)
         {
-            var retval = _context.Questions.Where(x => x.Id == id).FirstOrDefault();
-            return retval!=null?retval: new Question();
+            var retval = _context.Questions
+                .Include(q => q.User)
+                .Include(q => q.Answers)
+                .Include(q => q.QuestionTags)
+                .Where(q => q.Id == id).FirstOrDefault();
+            return retval ?? new Question();
         }
 
         [HttpPost]

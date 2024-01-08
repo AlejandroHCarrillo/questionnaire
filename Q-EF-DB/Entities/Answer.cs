@@ -18,8 +18,8 @@ namespace Q_EF_DB.Entities
         public int? QuestionId { get; set; }
         public int? UserId { get; set; }
 
-        [ForeignKey("QuestionId")]
-        public virtual Question Question { get; set; }
+        //[ForeignKey("QuestionId")]
+        //public virtual Question Question { get; set; }
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
