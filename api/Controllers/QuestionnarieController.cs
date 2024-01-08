@@ -45,6 +45,33 @@ namespace questionnaire.Controllers
                 .ToArray();
         }
 
+
+        [HttpGet]
+        [Route("getquestionsbytag")]
+        public dynamic GetQuestionsByTag(int tagId)
+        {
+            // TODO: Add Page, pagesize and filters
+            // TODO: this is the way to get the value from a many to many
+            //       but there is a bug because just retrive 1 tag
+            //       perhaps is better iterate over the array and get the tags like in the getquestion enpoint
+            return _context.Questions
+                .Include(q => q.User)
+                .Include(q => q.Answers)
+                .Include(q => q.QuestionTags)
+                .SelectMany(q => q.QuestionTags
+                                    .Where(qt => qt.TagId == tagId)
+                                    .Select(qt => new {
+                                        id = q.Id,
+                                        value = q.Value,
+                                        answers = q.Answers,
+                                        user = q.User,
+                                        tags = new { id = qt.Id, tag = qt.Tag.Description ?? "" }
+                                    }
+                    )
+                )
+                .ToArray();
+        }
+
         [HttpGet]
         [Route("getquestion")]
         public Question Get(int id = 0)
