@@ -23,27 +23,45 @@ namespace questionnaire.Controllers
 
         [HttpGet]
         [Route("allquestions")]
-        public IEnumerable<Question> Get()
+        public dynamic Get()
         {
             // TODO: Add Page, pagesize and filters
+            // TODO: this is the way to get the value from a many to many
+            //       but there is a bug because just retrive 1 tag
+            //       perhaps is better iterate over the array and get the tags like in the getquestion enpoint
             return _context.Questions
                 .Include(q => q.User)
                 .Include(q => q.Answers)
                 .Include(q => q.QuestionTags)
-                //.Include(x => x.QuestionTags. )
-                .ToArray<Question>();
+                .SelectMany( q => q.QuestionTags.Select( qt => new { 
+                            id = q.Id,
+                            value = q.Value,
+                            answers = q.Answers,
+                            user = q.User,
+                            tags = new { id = qt.Id, tag = qt.Tag.Description ?? "" }
+                        }                    
+                    )                
+                )
+                .ToArray();
         }
 
         [HttpGet]
         [Route("getquestion")]
-        public dynamic Get(int id = 0)
+        public Question Get(int id = 0)
         {
             var retval = _context.Questions
                 .Include(q => q.User)
                 .Include(q => q.Answers)
                 .Include(q => q.QuestionTags)
-                .Where(q => q.Id == id).FirstOrDefault();
-            return retval ?? new Question();
+                .Where(q => q.Id == id)
+                .FirstOrDefault() ?? new Question { };
+            
+            foreach(var item in retval.QuestionTags)
+            {
+                item.Tag = _context.Tags.Where(t => t.Id == item.TagId).FirstOrDefault();
+            }
+
+            return retval;
         }
 
         [HttpPost]
@@ -137,7 +155,7 @@ namespace questionnaire.Controllers
             //finally
             //{
             //}
-            return retQuestion;
+            return retQuestion.Votes;
         }
 
         [HttpPut]
@@ -292,7 +310,7 @@ namespace questionnaire.Controllers
             //finally
             //{
             //}
-            return retAnswer;
+            return retAnswer.Votes;
         }
 
 

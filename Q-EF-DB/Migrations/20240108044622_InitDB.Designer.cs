@@ -12,7 +12,7 @@ using Q_EF_DB;
 namespace Q_EF_DB.Migrations
 {
     [DbContext(typeof(QContext))]
-    [Migration("20240107035618_InitDB")]
+    [Migration("20240108044622_InitDB")]
     partial class InitDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,6 @@ namespace Q_EF_DB.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
 
                     b.Property<int?>("QuestionId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("UserId")
@@ -265,19 +264,15 @@ namespace Q_EF_DB.Migrations
 
             modelBuilder.Entity("Q_EF_DB.Entities.Answer", b =>
                 {
-                    b.HasOne("Q_EF_DB.Entities.Question", "Question")
+                    b.HasOne("Q_EF_DB.Entities.Question", null)
                         .WithMany("Answers")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("QuestionId");
 
                     b.HasOne("Q_EF_DB.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Question");
 
                     b.Navigation("User");
                 });
@@ -295,15 +290,13 @@ namespace Q_EF_DB.Migrations
 
             modelBuilder.Entity("Q_EF_DB.Entities.QuestionTag", b =>
                 {
-                    b.HasOne("Q_EF_DB.Entities.Question", "Question")
+                    b.HasOne("Q_EF_DB.Entities.Question", null)
                         .WithMany("QuestionTags")
                         .HasForeignKey("QuestionId");
 
                     b.HasOne("Q_EF_DB.Entities.Tag", "Tag")
                         .WithMany()
                         .HasForeignKey("TagId");
-
-                    b.Navigation("Question");
 
                     b.Navigation("Tag");
                 });
