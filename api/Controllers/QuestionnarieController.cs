@@ -41,7 +41,7 @@ namespace questionnaire.Controllers
             Question retQuestion = new Question { Value = question.Value, UserId = question.UserId, Votes = 0 };
             try
             {
-                // Save or Create Post
+                // Save or Create Question
                 _context.Add(retQuestion);
                 _context.SaveChanges();
 
@@ -76,7 +76,7 @@ namespace questionnaire.Controllers
 
             try
             {
-                // Save or Create Post
+                // Update question
                 _context.Update<Question>(retQuestion);
                 _context.SaveChanges();
 
@@ -114,7 +114,7 @@ namespace questionnaire.Controllers
 
             try
             {
-                // Save or Create Post
+                // Update Question
                 _context.Update<Question>(retQuestion);
                 _context.SaveChanges();
 
@@ -173,7 +173,7 @@ namespace questionnaire.Controllers
             {
                 QuestionTag newQuestionTag = new QuestionTag { QuestionId = qTag.questionId, TagId = qTag.tagId };
 
-                // Save or Create Post
+                // Save question Tag 
                 _context.Add<QuestionTag>(newQuestionTag);
                 _context.SaveChanges();
 
@@ -195,7 +195,7 @@ namespace questionnaire.Controllers
             Answer retAnswer = new Answer { Value = answer.Value, QuestionId = answer.QuestionId, UserId = answer.UserId, Votes = 0 };
             try
             {
-                // Save or Create Post
+                // Save or Create Answer
                 _context.Add(retAnswer);
                 _context.SaveChanges();
 
@@ -231,7 +231,7 @@ namespace questionnaire.Controllers
 
             try
             {
-                // Save or Create Post
+                // Update answer
                 _context.Update(retAnswer);
                 _context.SaveChanges();
 
@@ -269,7 +269,7 @@ namespace questionnaire.Controllers
 
             try
             {
-                // Save or Create Post
+                // Update Aswer
                 _context.Update<Answer>(retAnswer);
                 _context.SaveChanges();
 
